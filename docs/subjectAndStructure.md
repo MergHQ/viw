@@ -1,0 +1,13 @@
+# Subject
+
+Viw is a OBJ viewer written in Java. Viw comes with a orbiting camera and simple Blinn-Phong lighting model.
+
+
+**Subject:** Software to view OBJ files.
+**Users:** Generic user.
+
+**User actions**
+- Specify file to load
+    - Succesfull if file exists
+- Parse file
+- Render file
