@@ -8,6 +8,6 @@ Viw is a OBJ viewer written in Java. Viw comes with a orbiting camera and simple
 
 **User actions**
 - Specify file to load
-    - Succesfull if file exists
+    - Succesfull if file exists and data is valid.
 - Parse file
 - Render file
