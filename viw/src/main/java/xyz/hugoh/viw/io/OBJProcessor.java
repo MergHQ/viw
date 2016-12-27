@@ -42,11 +42,10 @@ public class OBJProcessor {
         String[] lineArgs = line.split(" ");
         if (lineArgs.length != 0 && !lineArgs[0].equals("#")) {
             switch (lineArgs[0]) {
-                case "g": {
+                case "g":
                     m.setName(lineArgs[1]);
                     break;
-                }
-                case "v": {
+                case "v":
                     try {
                         vertices.add(Float.parseFloat(lineArgs[2]));
                         vertices.add(Float.parseFloat(lineArgs[4]));
@@ -55,8 +54,7 @@ public class OBJProcessor {
                         System.out.println(e.getMessage());
                     }
                     break;
-                }
-                case "vn": {
+                case "vn":
                     try {
                         normals.add(Float.parseFloat(lineArgs[2]));
                         normals.add(Float.parseFloat(lineArgs[4]));
@@ -65,11 +63,9 @@ public class OBJProcessor {
                         System.out.println(e.getMessage());
                     }
                     break;
-                }
-                case "f": {
+                case "f":
                     // index
                     break;
-                }
             }
         }
     }

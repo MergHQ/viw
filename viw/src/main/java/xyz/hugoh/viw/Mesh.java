@@ -24,7 +24,7 @@ public class Mesh {
     }
 
     public void setPosition(float x, float y, float z) {
-        float[] converted = {x,y,z,0.f};
+        float[] converted = {x, y, z, 0.f};
         transformationMatrix = Matrix.translate4x4(transformationMatrix, converted);
     }
 

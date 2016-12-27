@@ -20,8 +20,9 @@ public class Window {
     public Window() {}
 
     public void create(int width, int height) {
-        if ( !glfwInit() )
+        if (!glfwInit()) {
             throw new IllegalStateException("Unable to initialize GLFW");
+        }
 
         glfwDefaultWindowHints(); // optional, the current window hints are already the default
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE); // the window will stay hidden after creation
@@ -52,8 +53,9 @@ public class Window {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
         while (!glfwWindowShouldClose(windowHandle)) {
-            if (renderer != null)
+            if (renderer != null) {
                 renderer.render();
+            }
             glfwSwapBuffers(windowHandle);
             glfwPollEvents();
         }
@@ -63,7 +65,9 @@ public class Window {
         this.renderer = renderer;
     }
 
-    public Renderer GetRenderer() { return this.renderer; }
+    public Renderer getRenderer() {
+        return this.renderer;
+    }
 
     public Camera getCamera() {
         return camera;

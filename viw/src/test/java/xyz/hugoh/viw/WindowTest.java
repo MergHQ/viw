@@ -20,7 +20,7 @@ public class WindowTest {
     }
 
     @Test
-    public void cameraIsNullOnInit() {  
+    public void cameraIsNullOnInit() {
         assertTrue(window.getCamera() == null);
     }
 }
