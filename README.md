@@ -7,10 +7,5 @@
 ### Documentation
 
 [subject and structure](/docs/subjectAndStructure.md)
-[working hours](/docs/hours.md)
 
-### Working hours
-Day | Hours | Description
---------------- | ----- | ------
-21.12.2016 | 0.5h | Project creation
-... | ... | ...
+[working hours](/docs/hours.md)
