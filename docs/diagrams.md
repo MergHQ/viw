@@ -1,6 +1,7 @@
 # Diagrams
 
-![Class diagram](/img/classdiagram.png)
+## Class diagram
+![Class diagram](/docs/img/classdiagram.png)
 
 ### yUML script
 ```
