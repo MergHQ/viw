@@ -2,11 +2,7 @@ package xyz.hugoh.viw.io;
 
 import xyz.hugoh.viw.Mesh;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.nio.Buffer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
@@ -14,6 +10,7 @@ import java.util.stream.Stream;
 /**
  * Created by Hugo on 26.12.2016.
  */
+
 public class OBJProcessor {
     public OBJProcessor() {}
 
