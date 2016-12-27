@@ -9,3 +9,5 @@
 [subject and structure](/docs/subjectAndStructure.md)
 
 [working hours](/docs/hours.md)
+
+[diagrams](/docs/diagrams.md)
