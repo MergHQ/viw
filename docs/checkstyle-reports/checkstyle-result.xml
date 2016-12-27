@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="C:\Users\hugoh\Documents\viw\viw\src\main\java\xyz\hugoh\viw\App.java">
+</file>
+<file name="C:\Users\hugoh\Documents\viw\viw\src\main\java\xyz\hugoh\viw\Camera.java">
+</file>
+<file name="C:\Users\hugoh\Documents\viw\viw\src\main\java\xyz\hugoh\viw\io\OBJProcessor.java">
+</file>
+<file name="C:\Users\hugoh\Documents\viw\viw\src\main\java\xyz\hugoh\viw\io\ShaderProcessor.java">
+</file>
+<file name="C:\Users\hugoh\Documents\viw\viw\src\main\java\xyz\hugoh\viw\math\Array.java">
+</file>
+<file name="C:\Users\hugoh\Documents\viw\viw\src\main\java\xyz\hugoh\viw\math\Matrix.java">
+</file>
+<file name="C:\Users\hugoh\Documents\viw\viw\src\main\java\xyz\hugoh\viw\Mesh.java">
+</file>
+<file name="C:\Users\hugoh\Documents\viw\viw\src\main\java\xyz\hugoh\viw\renderer\Renderer.java">
+</file>
+<file name="C:\Users\hugoh\Documents\viw\viw\src\main\java\xyz\hugoh\viw\renderer\Window.java">
+</file>
+<file name="C:\Users\hugoh\Documents\viw\viw\src\main\java\xyz\hugoh\viw\Scene.java">
+</file>
+<file name="C:\Users\hugoh\Documents\viw\viw\src\main\java\xyz\hugoh\viw\Shader.java">
+</file>
+</checkstyle>
