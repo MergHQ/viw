@@ -20,10 +20,14 @@ public class Window {
     public Window() {}
 
     public void create(int width, int height) {
-        windowHandle = glfwCreateWindow(width, height, "Viw", NULL, NULL);
-        glfwSetKeyCallback(windowHandle, (window, key, scancode, action, mods) -> {
-        });
+        if ( !glfwInit() )
+            throw new IllegalStateException("Unable to initialize GLFW");
 
+        glfwDefaultWindowHints(); // optional, the current window hints are already the default
+        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE); // the window will stay hidden after creation
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
+
+        windowHandle = glfwCreateWindow(width, height, "Viw", NULL, NULL);
         GLFWVidMode vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
         // Center our window
         glfwSetWindowPos(
@@ -48,7 +52,8 @@ public class Window {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
         while (!glfwWindowShouldClose(windowHandle)) {
-            renderer.render();
+            if (renderer != null)
+                renderer.render();
             glfwSwapBuffers(windowHandle);
             glfwPollEvents();
         }

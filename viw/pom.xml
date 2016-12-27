@@ -282,12 +282,10 @@
                 <version>1.1.8</version>
                 <configuration>
                     <targetClasses>
-                        <param></param>
-                        <param></param>
+                        <param>xyz.hugoh.viw*</param>
                     </targetClasses>
                     <targetTests>
-                        <param></param>
-                        <param></param>
+                        <param>xyz.hugoh.viw*</param>
                     </targetTests>
                 </configuration>
             </plugin>
