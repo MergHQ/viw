@@ -16,6 +16,7 @@ public class Window {
     private long windowHandle;
     private Renderer renderer;
     private Camera camera;
+    private int width, height;
 
     public Window() {}
 
@@ -23,6 +24,9 @@ public class Window {
         if (!glfwInit()) {
             throw new IllegalStateException("Unable to initialize GLFW");
         }
+
+        this.width = width;
+        this.height = height;
 
         glfwDefaultWindowHints(); // optional, the current window hints are already the default
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE); // the window will stay hidden after creation
@@ -36,6 +40,12 @@ public class Window {
             (vidmode.width() - width) / 2,
             (vidmode.height() - height) / 2
         );
+
+        glfwSetKeyCallback(windowHandle, (window, key, scancode, action, mods) -> {
+           if (camera != null) {
+               camera.onInputEvent(window, key, scancode, action, mods);
+           }
+        });
 
         // Make the OpenGL context current
         glfwMakeContextCurrent(windowHandle);
