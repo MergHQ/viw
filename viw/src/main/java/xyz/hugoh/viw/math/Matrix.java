@@ -54,5 +54,29 @@ public class Matrix {
         newMatrix[3] = sum;
         return newMatrix;
     }
+
+    public static float[][] lookAt(float[] pos, float[] up, float[] center) {
+        float[] viewray = Array.normalize(Array.diff(center, pos));
+        float[] right = Array.normalize(Array.cross3(viewray, up));
+        up = Array.cross3(right, viewray);
+        float[][] res = {
+            {right[0], up[0], -viewray[0], -Array.dot(right, pos)},
+            {right[1], up[1], -viewray[1], -Array.dot(up, pos)},
+            {right[2], up[2], -viewray[2], Array.dot(viewray, pos)},
+            {0f,0f,0f,1f}
+        };
+        return res;
+    }
+
+    public static float[][] perspective(float fov, float aspect, float near, float far) {
+        float tanHalfFov = (float) Math.tan(fov / 2.f);
+        float[][] res = {
+            {1.f / (aspect * tanHalfFov), 0f, 0f, 0f},
+            {0f, 1.f / tanHalfFov, 0f, 0f},
+            {0f, 0f, -(far + near) / (far - near), -1f},
+            {0f, 0f, - ((2f * far * near) / (far - near)), 0f}
+        };
+        return res;
+    }
 }
 
