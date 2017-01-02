@@ -45,24 +45,24 @@ public class Matrix {
     public static float[][] translate4x4(float[][] matrix, float[] vector) {
         float[][] newMatrix = new float[4][4];
         System.arraycopy(matrix, 0, newMatrix, 0, matrix.length);
-        float[] a = Array.mulFloat(matrix[0], vector[0]);
-        float[] b = Array.mulFloat(matrix[1], vector[1]);
-        float[] c = Array.mulFloat(matrix[2], vector[2]);
-        float[] sum = Array.sum(a, b);
-        sum = Array.sum(sum, c);
-        sum = Array.sum(sum, matrix[3]);
+        float[] a = VectorArray.mulFloat(matrix[0], vector[0]);
+        float[] b = VectorArray.mulFloat(matrix[1], vector[1]);
+        float[] c = VectorArray.mulFloat(matrix[2], vector[2]);
+        float[] sum = VectorArray.sum(a, b);
+        sum = VectorArray.sum(sum, c);
+        sum = VectorArray.sum(sum, matrix[3]);
         newMatrix[3] = sum;
         return newMatrix;
     }
 
     public static float[][] lookAt(float[] pos, float[] up, float[] center) {
-        float[] viewray = Array.normalize(Array.diff(center, pos));
-        float[] right = Array.normalize(Array.cross3(viewray, up));
-        up = Array.cross3(right, viewray);
+        float[] viewray = VectorArray.normalize(VectorArray.diff(center, pos));
+        float[] right = VectorArray.normalize(VectorArray.cross3(viewray, up));
+        up = VectorArray.cross3(right, viewray);
         float[][] res = {
-            {right[0], up[0], -viewray[0], -Array.dot(right, pos)},
-            {right[1], up[1], -viewray[1], -Array.dot(up, pos)},
-            {right[2], up[2], -viewray[2], Array.dot(viewray, pos)},
+            {right[0], up[0], -viewray[0], -VectorArray.dot(right, pos)},
+            {right[1], up[1], -viewray[1], -VectorArray.dot(up, pos)},
+            {right[2], up[2], -viewray[2], VectorArray.dot(viewray, pos)},
             {0f,0f,0f,1f}
         };
         return res;
