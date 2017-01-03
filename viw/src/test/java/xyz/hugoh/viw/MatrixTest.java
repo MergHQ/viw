@@ -46,4 +46,19 @@ public class MatrixTest {
         assertTrue(Arrays.deepEquals(mat, res));
     }
 
+    @Test
+    public void lookAtWorks() {
+        float[] pos = {0f, 1f, 1f};
+        float[] up = {0f, 1f, 0f};
+        float[] center = {0f,0f,0f};
+        float[][] matrix = Matrix.lookAt(pos, up, center);
+        assertTrue(matrix[2][3] == 1.4142135f);
+    }
+
+    @Test
+    public void perspectiveWorks() {
+        float[][] a = Matrix.perspective(60.f, 1280.f / 720.f, 0.0f, 1000.0f);
+        assertTrue(a[1][1] == -0.15611996f);
+    }
+
 }
