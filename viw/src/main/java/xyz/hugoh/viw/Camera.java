@@ -9,8 +9,8 @@ import xyz.hugoh.viw.math.Matrix;
 public abstract class Camera {
     private float[][] viewMatrix;
     private float[][] projectionMatrix;
-    private float[] center;
-    private float[] position;
+    private float[] center = {0f, 0f, 0f};
+    private float[] position = {0f, 0f, 0f};
 
     public Camera(float fov, float aspectRatio, float near, float far) {
         this.projectionMatrix = Matrix.perspective(fov, aspectRatio, near, far);

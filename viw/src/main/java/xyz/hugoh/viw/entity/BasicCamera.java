@@ -10,12 +10,12 @@ public class BasicCamera extends Camera {
         super(fov, aspectRatio, near, far);
         float[] pos = {0f, 1f, 1f};
         float[] center = {0f, 0f, 0f};
-        super.setCenter(center);
         super.setPosition(pos);
     }
 
     @Override
-    public void onInputEvent() {
-
+    public void onInputEvent(long window, int key, int scancode, int action, int mods) {
+        System.out.println(key);
     }
+
 }
