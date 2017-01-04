@@ -3,7 +3,7 @@ package xyz.hugoh.viw.entity;
 import xyz.hugoh.viw.Camera;
 
 /**
- * Created by Hugo on 2.1.2017.
+ * Basic camera.
  */
 public class BasicCamera extends Camera {
     public BasicCamera(float fov, float aspectRatio, float near, float far) {
@@ -15,7 +15,5 @@ public class BasicCamera extends Camera {
 
     @Override
     public void onInputEvent(long window, int key, int scancode, int action, int mods) {
-        System.out.println(key);
     }
-
 }

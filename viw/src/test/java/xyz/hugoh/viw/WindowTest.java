@@ -23,4 +23,5 @@ public class WindowTest {
     public void cameraIsNullOnInit() {
         assertTrue(window.getCamera() == null);
     }
+
 }

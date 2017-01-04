@@ -1,9 +1,10 @@
 package xyz.hugoh.viw.renderer;
 
 import xyz.hugoh.viw.Scene;
+import xyz.hugoh.viw.Shader;
 
 /**
- * Created by Hugo on 26.12.2016.
+ * Class that handles the rendering of a scene
  */
 public class Renderer {
     private Scene currentScene;

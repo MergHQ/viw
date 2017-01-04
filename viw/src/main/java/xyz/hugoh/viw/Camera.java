@@ -3,7 +3,7 @@ package xyz.hugoh.viw;
 import xyz.hugoh.viw.math.Matrix;
 
 /**
- * Created by Hugo on 26.12.2016.
+ * Base camera class
  */
 
 public abstract class Camera {
@@ -16,6 +16,14 @@ public abstract class Camera {
         this.projectionMatrix = Matrix.perspective(fov, aspectRatio, near, far);
     }
 
+    /**
+     * Called on a key event.
+     * @param window
+     * @param key
+     * @param scancode
+     * @param action
+     * @param mods
+     */
     public void onInputEvent(long window, int key, int scancode, int action, int mods) {
 
     }

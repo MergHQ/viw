@@ -5,17 +5,28 @@ package xyz.hugoh.viw;
  */
 
 import org.junit.*;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.opengl.GL;
 import xyz.hugoh.viw.io.OBJProcessor;
 
 import java.io.IOException;
 
 import static org.junit.Assert.*;
+import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.glfw.GLFW.glfwShowWindow;
+import static org.lwjgl.glfw.GLFW.glfwSwapInterval;
+import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class OBJProcessorTest {
     OBJProcessor processor;
 
     @Before
     public void setUp() {
+        GLFW.glfwInit();
+        long windowHandle = glfwCreateWindow(100, 100, "", NULL, NULL);
+        glfwMakeContextCurrent(windowHandle);
+        GL.createCapabilities();
         processor = new OBJProcessor();
     }
 

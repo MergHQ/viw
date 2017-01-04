@@ -1,13 +1,17 @@
 package xyz.hugoh.viw.math;
 
 /**
- * Created by Hugo on 27.12.2016.
+ * Utils for matrices
  */
 public class Matrix {
 
     public Matrix() {
     }
 
+    /**
+     * Creates a 4x4 identity matrix
+     * @return matrix [col][row]
+     */
     public static float[][] identityMatrix44() {
         float[][] matrix =
             {
@@ -19,7 +23,12 @@ public class Matrix {
         return matrix;
     }
 
-
+    /**
+     * Does a matrix multiplication
+     * @param a matrix
+     * @param b matrix
+     * @return product
+     */
     public static float[][] mul(float[][] a, float[][] b) {
         int aRows = a[0].length;
         int bRows = b[0].length;
@@ -42,6 +51,12 @@ public class Matrix {
         return newMatrix;
     }
 
+    /**
+     * Does a translation on a transformation matrix
+     * @param matrix transformation matrix
+     * @param vector vector where to move
+     * @return translated matrix
+     */
     public static float[][] translate4x4(float[][] matrix, float[] vector) {
         float[][] newMatrix = new float[4][4];
         System.arraycopy(matrix, 0, newMatrix, 0, matrix.length);
@@ -55,6 +70,13 @@ public class Matrix {
         return newMatrix;
     }
 
+    /**
+     * Creates a view matrix
+     * @param pos position of camera
+     * @param up up vector
+     * @param center where the camera looks at
+     * @return view matrix
+     */
     public static float[][] lookAt(float[] pos, float[] up, float[] center) {
         float[] viewray = VectorArray.normalize(VectorArray.diff(center, pos));
         float[] right = VectorArray.normalize(VectorArray.cross3(viewray, up));
@@ -63,18 +85,26 @@ public class Matrix {
             {right[0], up[0], -viewray[0], -VectorArray.dot(right, pos)},
             {right[1], up[1], -viewray[1], -VectorArray.dot(up, pos)},
             {right[2], up[2], -viewray[2], VectorArray.dot(viewray, pos)},
-            {0f,0f,0f,1f}
+            {0f, 0f, 0f, 1f}
         };
         return res;
     }
 
+    /**
+     * Create a projection matrix
+     * @param fov field of view in degrees
+     * @param aspect aspect ratio (width / height)
+     * @param near near-field
+     * @param far far-field
+     * @return projection matrix
+     */
     public static float[][] perspective(float fov, float aspect, float near, float far) {
         float tanHalfFov = (float) Math.tan(fov / 2.f);
         float[][] res = {
             {1.f / (aspect * tanHalfFov), 0f, 0f, 0f},
             {0f, 1.f / tanHalfFov, 0f, 0f},
             {0f, 0f, -(far + near) / (far - near), -1f},
-            {0f, 0f, - ((2f * far * near) / (far - near)), 0f}
+            {0f, 0f, -((2f * far * near) / (far - near)), 0f}
         };
         return res;
     }

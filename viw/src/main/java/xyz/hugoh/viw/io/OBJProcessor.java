@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 import org.lwjgl.opengl.*;
 
 /**
- * Created by Hugo on 26.12.2016.
+ * Loads a OBJ file, parses it and creates a render-ready Mesh object
  */
 
 public class OBJProcessor {
@@ -32,6 +32,11 @@ public class OBJProcessor {
         indices = new ArrayList<>();
     }
 
+    /**
+     * Loads and parses OBJ file.
+     * @param file path to the OBJ file
+     * @return Mesh render-ready mesh
+     */
     public Mesh load3DObject(String file) {
         Mesh mesh = new Mesh("");
         try {
@@ -40,7 +45,7 @@ public class OBJProcessor {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        //createGLHandles(mesh);
+        createGLHandles(mesh);
         return mesh;
     }
 
@@ -54,27 +59,24 @@ public class OBJProcessor {
 
         // Vertices
         GL20.glEnableVertexAttribArray(0);
-        IntBuffer buffer = IntBuffer.allocate(1);
-        GL15.glGenBuffers(buffer);
-        int vbo = buffer.get(0);
+        int vbo = GL15.glGenBuffers();
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, vbo);
         DoubleBuffer vertexData = BufferUtils.createDoubleBuffer(vertexArray.length * 3);
         vertexData.put(vertexArray);
         vertexData.flip();
         GL15.glBufferData(GL15.GL_ARRAY_BUFFER, vertexData, GL15.GL_STATIC_DRAW);
-        GL20.glVertexAttribPointer(0, 3,GL11.GL_DOUBLE, false, GL11.GL_FALSE, 32);
+        GL20.glVertexAttribPointer(0, 3, GL11.GL_DOUBLE, false, GL11.GL_FALSE, 32);
 
         // Normals
         GL20.glEnableVertexAttribArray(1);
-        buffer = IntBuffer.allocate(1);
-        GL15.glGenBuffers(buffer);
-        int nbo = buffer.get(0);
+        GL15.glGenBuffers();
+        int nbo = GL15.glGenBuffers();
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, nbo);
         DoubleBuffer normalData = BufferUtils.createDoubleBuffer(normalArray.length * 3);
         vertexData.put(normalArray);
         vertexData.flip();
         GL15.glBufferData(GL15.GL_ARRAY_BUFFER, normalData, GL15.GL_STATIC_DRAW);
-        GL20.glVertexAttribPointer(0, 3,GL11.GL_DOUBLE, false, GL11.GL_FALSE, 32);
+        GL20.glVertexAttribPointer(0, 3, GL11.GL_DOUBLE, false, GL11.GL_FALSE, 32);
 
         m.setVertexArrayObject(vao);
         GL30.glBindVertexArray(0);
@@ -109,15 +111,6 @@ public class OBJProcessor {
                     // index
                     break;
             }
-        }
-    }
-
-    private static <T> void fromListToArray(ArrayList<?> input, T[] out) {
-        if (out.length != input.size()) {
-            throw new IllegalArgumentException("Array sizes do no match");
-        }
-        for (int i = 0; i < input.size(); ++i) {
-            out[i] = (T) input.get(i);
         }
     }
 }
