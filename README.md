@@ -12,6 +12,6 @@
 
 [diagrams](/docs/diagrams.md)
 
-[Checkstyle](https://htmlpreview.github.io/?https://raw.githubusercontent.com/MergHQ/viw/master/docs/checkstyle-reports/201704011702/checkstyle.html)
+[Checkstyle](https://htmlpreview.github.io/?https://raw.githubusercontent.com/MergHQ/viw/master/docs/checkstyle-reports/201701041852/checkstyle.html)
 
-[PIT-report](https://htmlpreview.github.io/?https://raw.githubusercontent.com/MergHQ/viw/master/docs/pit/201701041649/index.html)
+[PIT-report](https://htmlpreview.github.io/?https://raw.githubusercontent.com/MergHQ/viw/master/docs/pit/201701041851/index.html)
