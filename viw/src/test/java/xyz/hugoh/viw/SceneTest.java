@@ -33,4 +33,9 @@ public class SceneTest {
         scene.addMesh(m);
         assertEquals(m.getName(), scene.getMesh(name).getName());
     }
+
+    @Test
+    public void shaderIsNull() {
+        assertNull(scene.getShader());
+    }
 }

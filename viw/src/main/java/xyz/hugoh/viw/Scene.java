@@ -40,4 +40,12 @@ public class Scene {
     public List<Mesh> getMeshList() {
         return meshList;
     }
+
+    public Shader getShader() {
+        return shader;
+    }
+
+    public void setShader(Shader shader) {
+        this.shader = shader;
+    }
 }

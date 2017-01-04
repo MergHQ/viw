@@ -36,6 +36,10 @@ public abstract class Camera {
         return projectionMatrix;
     }
 
+    /**
+     * Sets the camera position and recreates the view matrix
+     * @param pos
+     */
     public void setPosition(float[] pos) {
         position = pos;
         recreateView();
@@ -45,6 +49,10 @@ public abstract class Camera {
         return position;
     }
 
+    /**
+     * Sets the camera look at and recreates the view matrix
+     * @param center
+     */
     public void setCenter(float[] center) {
         this.center = center;
         recreateView();
