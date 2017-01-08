@@ -11,6 +11,10 @@ public class Mesh {
     private float[][] transformationMatrix;
     private int vertexArrayObject;
 
+    /**
+     * Instantiates a new {@link Mesh} instance.
+     * @param name name of the mesh
+     */
     public Mesh(String name) {
         this.name = name;
         this.transformationMatrix = Matrix.identityMatrix44();
@@ -24,6 +28,12 @@ public class Mesh {
         this.name = name;
     }
 
+    /**
+     * Sets the position of the mesh.
+     * @param x x value
+     * @param y y value
+     * @param z z value
+     */
     public void setPosition(float x, float y, float z) {
         float[] converted = {x, y, z, 0.f};
         transformationMatrix = Matrix.translate4x4(transformationMatrix, converted);

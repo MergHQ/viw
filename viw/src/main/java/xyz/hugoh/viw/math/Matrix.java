@@ -1,15 +1,11 @@
 package xyz.hugoh.viw.math;
 
 /**
- * Utils for matrices
+ * Utils for matrices.
  */
 public class Matrix {
-
-    public Matrix() {
-    }
-
     /**
-     * Creates a 4x4 identity matrix
+     * Creates a 4x4 identity matrix.
      * @return matrix [col][row]
      */
     public static float[][] identityMatrix44() {
@@ -24,7 +20,7 @@ public class Matrix {
     }
 
     /**
-     * Does a matrix multiplication
+     * Does a matrix multiplication.
      * @param a matrix
      * @param b matrix
      * @return product
@@ -52,7 +48,7 @@ public class Matrix {
     }
 
     /**
-     * Does a translation on a transformation matrix
+     * Does a translation on a transformation matrix.
      * @param matrix transformation matrix
      * @param vector vector where to move
      * @return translated matrix
@@ -71,7 +67,7 @@ public class Matrix {
     }
 
     /**
-     * Creates a view matrix
+     * Creates a view matrix.
      * @param pos position of camera
      * @param up up vector
      * @param center where the camera looks at
@@ -91,7 +87,7 @@ public class Matrix {
     }
 
     /**
-     * Create a projection matrix
+     * Create a projection matrix.
      * @param fov field of view in degrees
      * @param aspect aspect ratio (width / height)
      * @param near near-field

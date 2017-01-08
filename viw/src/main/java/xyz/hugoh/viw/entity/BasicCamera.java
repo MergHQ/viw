@@ -6,6 +6,13 @@ import xyz.hugoh.viw.Camera;
  * Basic camera.
  */
 public class BasicCamera extends Camera {
+    /**
+     * Creates a new {@link BasicCamera} instance.
+     * @param fov field of view
+     * @param aspectRatio aspect ratio
+     * @param near camera near field
+     * @param far camera far field
+     */
     public BasicCamera(float fov, float aspectRatio, float near, float far) {
         super(fov, aspectRatio, near, far);
         float[] pos = {0f, 1f, 1f};

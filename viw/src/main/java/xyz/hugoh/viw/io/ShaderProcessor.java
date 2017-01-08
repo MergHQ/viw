@@ -11,12 +11,12 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL20.*;
 
 /**
- * Reads a shader file and create a Shader object
+ * Reads a shader file and create a Shader object.
  */
 public class ShaderProcessor {
 
     /**
-     * Loads and parses a shader file
+     * Loads and parses a shader file.
      *
      * @param file shader file to load
      * @return render-ready shader

@@ -1,15 +1,13 @@
 package xyz.hugoh.viw.math;
 
 /**
- * Utils for arrays treated as vectors
+ * Utils for arrays treated as vectors.
  */
 public class VectorArray {
-    public VectorArray() {}
-
     /**
-     * Multiply vector elements with each other
-     * @param a
-     * @param b
+     * Multiply vector elements with each other.
+     * @param a matrix a
+     * @param b matrix b
      * @return new array with the products
      */
     public static float[] mul(float[] a, float[] b) {
@@ -24,7 +22,7 @@ public class VectorArray {
     }
 
     /**
-     * Multiply array with float
+     * Multiply array with float.
      * @param a array of floats
      * @param b scalar value
      * @return product
@@ -38,7 +36,7 @@ public class VectorArray {
     }
 
     /**
-     * Sum of vectos elements
+     * Sum of vectos elements.
      * @param a vector a
      * @param b vector b
      * @return array with sums
@@ -55,7 +53,7 @@ public class VectorArray {
     }
 
     /**
-     * Difference of vectos elements
+     * Difference of vectos elements.
      * @param a vector a
      * @param b vector b
      * @return array with differences
@@ -72,7 +70,7 @@ public class VectorArray {
     }
 
     /**
-     * Calculates a dot product
+     * Calculates a dot product.
      * @param a vector a
      * @param b vector b
      * @return dot product
@@ -89,7 +87,7 @@ public class VectorArray {
     }
 
     /**
-     * Cross product on three dimensional vectors
+     * Cross product on three dimensional vectors.
      * @param a 3d vector
      * @param b 3d vector
      * @return cross product
@@ -104,7 +102,7 @@ public class VectorArray {
     }
 
     /**
-     * Calculates length of a vector
+     * Calculates length of a vector.
      * @param a vector
      * @return length
      */
@@ -117,7 +115,7 @@ public class VectorArray {
     }
 
     /**
-     * Turns a vector into a unit vector
+     * Turns a vector into a unit vector.
      * @param a vector
      * @return unit vector
      */

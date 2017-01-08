@@ -10,6 +10,10 @@ import static org.lwjgl.opengl.GL11.GL_VERSION;
 import static org.lwjgl.opengl.GL11.glGetString;
 
 public class App {
+    /**
+     * It should pretty clear what this method is, but checkstyle wants me to document this.
+     * @param args it should also be pretty clear what this is.
+     */
     public static void main(String[] args) {
         Window window = new Window();
         window.setCamera(new BasicCamera(60.f, 800.f / 600.f, 0.1f, 1000.f));

@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 import org.lwjgl.opengl.*;
 
 /**
- * Loads a OBJ file, parses it and creates a render-ready Mesh object
+ * Loads a OBJ file, parses it and creates a render-ready Mesh object.
  */
 
 public class OBJProcessor {
@@ -26,6 +26,9 @@ public class OBJProcessor {
     private List<Float> normals;
     private List<Integer> indices;
 
+    /**
+     * Creates a new {@link OBJProcessor} instance.
+     */
     public OBJProcessor() {
         vertices = new ArrayList<>();
         normals = new ArrayList<>();

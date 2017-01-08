@@ -1,25 +1,23 @@
 package xyz.hugoh.viw.renderer;
 
 import xyz.hugoh.viw.Scene;
-import xyz.hugoh.viw.Shader;
-
-import java.nio.FloatBuffer;
-
-import static org.lwjgl.opengl.GL11.GL_FALSE;
-import static org.lwjgl.opengl.GL20.glGetUniformLocation;
-import static org.lwjgl.opengl.GL20.glUniformMatrix4fv;
 import static org.lwjgl.opengl.GL20.glUseProgram;
-import static org.lwjgl.opengl.GL30.glBindVertexArray;
 
 /**
- * Class that handles the rendering of a scene
+ * Class that handles the rendering of a scene.
  */
 public class Renderer {
     private Scene currentScene;
 
+    /**
+     * Creates a new {@link Renderer} instance.
+     */
     public Renderer() {
     }
 
+    /**
+     * Called from the window loop.
+     */
     public void render() {
         glUseProgram(currentScene.getShader().getShaderProgramHandle());
         currentScene.getMeshList().forEach(mesh -> {

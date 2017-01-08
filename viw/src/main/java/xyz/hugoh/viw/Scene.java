@@ -6,12 +6,15 @@ import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 
 /**
- * Represents a Scene
+ * Represents a Scene.
  */
 public class Scene {
     private List<Mesh> meshList;
     private Shader shader;
 
+    /**
+     * Creates a new {@link Scene} instance.
+     */
     public Scene() {
         meshList = new ArrayList<>();
     }
@@ -25,7 +28,7 @@ public class Scene {
     }
 
     /**
-     * Gets a mesh by name
+     * Gets a mesh by name.
      * @param name name of the mesh
      * @return Mesh
      */

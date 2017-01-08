@@ -1,7 +1,7 @@
 package xyz.hugoh.viw.renderer;
 
 /**
- * Window
+ * Window.
  */
 
 import org.lwjgl.glfw.GLFWVidMode;
@@ -21,11 +21,14 @@ public class Window {
     private Camera camera;
     private int width, height;
 
+    /**
+     * Creates a new {@link Window} instance.
+     */
     public Window() {
     }
 
     /**
-     * Creates an OpenGL context and begins render loop
+     * Creates an OpenGL context and begins render loop.
      * @param width width of window
      * @param height height of window
      * @param onInitReady callback function that is executed when the OpenGL context is fully created

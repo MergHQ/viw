@@ -3,7 +3,7 @@ package xyz.hugoh.viw;
 import xyz.hugoh.viw.math.Matrix;
 
 /**
- * Base camera class
+ * Base camera class.
  */
 
 public abstract class Camera {
@@ -12,17 +12,24 @@ public abstract class Camera {
     private float[] center = {0f, 0f, 0f};
     private float[] position = {0f, 0f, 0f};
 
+    /**
+     * Creates a new {@link Camera} instance.
+     * @param fov field of view
+     * @param aspectRatio aspect ratio
+     * @param near camera near field
+     * @param far camera far field
+     */
     public Camera(float fov, float aspectRatio, float near, float far) {
         this.projectionMatrix = Matrix.perspective(fov, aspectRatio, near, far);
     }
 
     /**
      * Called on a key event.
-     * @param window
-     * @param key
-     * @param scancode
-     * @param action
-     * @param mods
+     * @param window window handle
+     * @param key key id
+     * @param scancode scancode handle
+     * @param action action id
+     * @param mods modifications
      */
     public void onInputEvent(long window, int key, int scancode, int action, int mods) {
 
@@ -37,8 +44,8 @@ public abstract class Camera {
     }
 
     /**
-     * Sets the camera position and recreates the view matrix
-     * @param pos
+     * Sets the camera position and recreates the view matrix.
+     * @param pos position
      */
     public void setPosition(float[] pos) {
         position = pos;
@@ -50,8 +57,8 @@ public abstract class Camera {
     }
 
     /**
-     * Sets the camera look at and recreates the view matrix
-     * @param center
+     * Sets the camera look at and recreates the view matrix.
+     * @param center center
      */
     public void setCenter(float[] center) {
         this.center = center;
