@@ -12,7 +12,10 @@ Viw is a OBJ viewer written in Java. Viw comes with a orbiting camera and simple
 - Parse file
 - Render file
 
-# Class diagram
+# Diagrams
+
+## Class diagram
+
 ![Class diagram](img/classdiagram.png)
 
 ### yUML script
