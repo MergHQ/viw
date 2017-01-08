@@ -33,7 +33,7 @@ public class OBJProcessor {
     }
 
     /**
-     * Loads and parses OBJ file.
+     * Loads and parses a OBJ file.
      * @param file path to the OBJ file
      * @return Mesh render-ready mesh
      */

@@ -1,7 +1,18 @@
 package xyz.hugoh.viw;
 
 /**
- * Created by Hugo on 26.12.2016.
+ * Wraps a OpenGL shader program
  */
 public class Shader {
+    private int shaderProgramHandle;
+
+    public Shader() {
+    }
+    public int getShaderProgramHandle() {
+        return shaderProgramHandle;
+    }
+
+    public void setShaderProgramHandle(int shaderProgramHandle) {
+        this.shaderProgramHandle = shaderProgramHandle;
+    }
 }

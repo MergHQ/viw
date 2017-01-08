@@ -11,6 +11,7 @@ import xyz.hugoh.viw.Camera;
 import java.util.concurrent.Callable;
 
 import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.opengl.GL20.GL_SHADING_LANGUAGE_VERSION;
 import static org.lwjgl.system.MemoryUtil.*;
 import static org.lwjgl.opengl.GL11.*;
 
@@ -63,6 +64,9 @@ public class Window {
         glfwShowWindow(windowHandle);
 
         GL.createCapabilities();
+
+        System.out.println(glGetString(GL_VERSION));
+        System.out.println(glGetString(GL_SHADING_LANGUAGE_VERSION));
 
         try {
             onInitReady.call();
