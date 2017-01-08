@@ -10,7 +10,7 @@
 
 [working hours](/docs/hours.md)
 
-[diagrams](/docs/diagrams.md)
+[diagrams](/docs/subjectAndStructure.md#Class Diagram)
 
 [Checkstyle](https://htmlpreview.github.io/?https://raw.githubusercontent.com/MergHQ/viw/master/docs/checkstyle-reports/201708011703/checkstyle.html)
 
