@@ -1,8 +1,9 @@
-package xyz.hugoh.viw;
+package xyz.hugoh.viw.io;
 
 import org.junit.*;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL;
+import xyz.hugoh.viw.Shader;
 import xyz.hugoh.viw.io.ShaderProcessor;
 
 import static org.junit.Assert.*;

@@ -1,4 +1,4 @@
-package xyz.hugoh.viw;
+package xyz.hugoh.viw.io;
 
 /**
  * Created by hugoh on 27/12/2016.
@@ -8,6 +8,7 @@ import org.junit.*;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
+import xyz.hugoh.viw.Mesh;
 import xyz.hugoh.viw.io.OBJProcessor;
 
 import java.io.IOException;

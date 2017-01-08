@@ -1,4 +1,4 @@
-package xyz.hugoh.viw;
+package xyz.hugoh.viw.math;
 
 /**
  * Created by Hugo on 27.12.2016.

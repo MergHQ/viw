@@ -1,4 +1,4 @@
-package xyz.hugoh.viw;
+package xyz.hugoh.viw.entity;
 
 import org.junit.Before;
 import org.junit.Test;
