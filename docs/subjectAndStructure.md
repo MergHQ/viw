@@ -12,6 +12,17 @@ Viw is a OBJ viewer written in Java. Viw comes with a orbiting camera and simple
 - Parse file
 - Render file
 
+# Description of code structure
+
+The main method reads the launch arguments, and creates a window. After the window is initialized a `Renderer`, `Scene`, `Mesh` and `Shader` is created.
+The mesh is loaded with the class `OBJLoader` which loads the obj file, parses it and registers them to the OpenGL state machine. Shaders are created with ShaderLoader, which work
+similary to `OBJLoader`.
+
+The `Window` class is responsible for creating a window, initializing all OpenGL systems and beginning the render loop. The `Renderer` class is responsible for
+rendering a scene. The `Renderer::setCurrentScene` function will switch the current scene to a new scene.
+
+There're also utilities for matrices and vectors. There are mainly used by `Camera` and `Mesh`.
+
 # Diagrams
 
 ## Class diagram

@@ -6,6 +6,8 @@ import xyz.hugoh.viw.io.ShaderProcessor;
 import xyz.hugoh.viw.renderer.Renderer;
 import xyz.hugoh.viw.renderer.Window;
 
+import java.util.Arrays;
+
 import static org.lwjgl.opengl.GL11.GL_VERSION;
 import static org.lwjgl.opengl.GL11.glGetString;
 
@@ -22,7 +24,7 @@ public class App {
 
             Scene scene = new Scene(window);
             OBJProcessor objProcessor = new OBJProcessor();
-            Mesh m  = objProcessor.load3DObject("cube.obj");
+            Mesh m  = objProcessor.load3DObject(args.length == 1 ? args[0] : "cube.obj");
             System.out.println(m.getName());
             scene.addMesh(m);
 
