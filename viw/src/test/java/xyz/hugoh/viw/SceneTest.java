@@ -15,7 +15,7 @@ public class SceneTest {
 
     @Before
     public void setUp() {
-        scene = new Scene();
+        scene = new Scene(null);
     }
 
     @Test

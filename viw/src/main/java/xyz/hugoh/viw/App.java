@@ -20,7 +20,7 @@ public class App {
         window.create(800, 600, () -> {
             Renderer renderer = new Renderer();
 
-            Scene scene = new Scene();
+            Scene scene = new Scene(window);
             OBJProcessor objProcessor = new OBJProcessor();
             Mesh m  = objProcessor.load3DObject("cube.obj");
             System.out.println(m.getName());

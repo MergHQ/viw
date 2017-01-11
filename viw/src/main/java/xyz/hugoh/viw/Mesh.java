@@ -9,6 +9,7 @@ import xyz.hugoh.viw.math.Matrix;
 public class Mesh {
     private String name;
     private float[][] transformationMatrix;
+    private int indices;
     private int vertexArrayObject;
 
     /**
@@ -53,5 +54,13 @@ public class Mesh {
 
     public void setVertexArrayObject(int vertexArrayObject) {
         this.vertexArrayObject = vertexArrayObject;
+    }
+
+    public int getIndices() {
+        return indices;
+    }
+
+    public void setIndices(int indices) {
+        this.indices = indices;
     }
 }

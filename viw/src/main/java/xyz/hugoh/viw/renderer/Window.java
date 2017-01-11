@@ -6,6 +6,7 @@ package xyz.hugoh.viw.renderer;
 
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL11;
 import xyz.hugoh.viw.Camera;
 
 import java.util.concurrent.Callable;
@@ -84,6 +85,8 @@ public class Window {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
         while (!glfwWindowShouldClose(windowHandle)) {
+            glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
+            glClearColor(1.0f, 1.0f, 1.0f, 0.8f);
             if (renderer != null) {
                 renderer.render();
             }

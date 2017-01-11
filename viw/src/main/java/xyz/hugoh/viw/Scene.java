@@ -1,5 +1,7 @@
 package xyz.hugoh.viw;
 
+import xyz.hugoh.viw.renderer.Window;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -11,11 +13,14 @@ import java.util.stream.Collectors;
 public class Scene {
     private List<Mesh> meshList;
     private Shader shader;
+    private Window window;
 
     /**
      * Creates a new {@link Scene} instance.
+     * @param window active window
      */
-    public Scene() {
+    public Scene(Window window) {
+        this.window = window;
         meshList = new ArrayList<>();
     }
 
@@ -50,5 +55,9 @@ public class Scene {
 
     public void setShader(Shader shader) {
         this.shader = shader;
+    }
+
+    public Window getWindow() {
+        return window;
     }
 }

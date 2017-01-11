@@ -104,5 +104,22 @@ public class Matrix {
         };
         return res;
     }
+
+    /**
+     * Convert matrix from 2D array to 1D array.
+     * @param matrix matrix to be converted
+     * @return 1d version of the matrix.
+     */
+    public static float[] converTo1D(float[][] matrix) {
+        float[] res = new float[matrix.length * matrix[0].length];
+        int index = 0;
+        for (int i = 0; i < matrix.length; ++i) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                res[index] = matrix[i][j];
+                ++index;
+            }
+        }
+        return res;
+    }
 }
 

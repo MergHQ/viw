@@ -5,6 +5,7 @@ import xyz.hugoh.viw.Mesh;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.nio.Buffer;
 import java.nio.DoubleBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
@@ -26,6 +27,8 @@ public class OBJProcessor {
     private List<Float> normals;
     private List<Integer> indices;
 
+    private float[] normalArray;
+
     /**
      * Creates a new {@link OBJProcessor} instance.
      */
@@ -45,17 +48,21 @@ public class OBJProcessor {
         try {
             Stream<String> stream = Files.lines(Paths.get(file));
             stream.forEach(line -> processLine(line, mesh));
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
         createGLHandles(mesh);
         return mesh;
     }
 
     private void createGLHandles(Mesh m) {
+        if (normalArray == null) {
+            return;
+        }
+
         // I can't believe there isn't any good way to do this.
         double[] vertexArray = vertices.stream().mapToDouble(f -> f).toArray();
-        double[] normalArray = normals.stream().mapToDouble(f -> f).toArray();
         int[] indexArray = indices.stream().mapToInt(i -> i).toArray();
         int vao = GL30.glGenVertexArrays();
         GL30.glBindVertexArray(vao);
@@ -68,18 +75,26 @@ public class OBJProcessor {
         vertexData.put(vertexArray);
         vertexData.flip();
         GL15.glBufferData(GL15.GL_ARRAY_BUFFER, vertexData, GL15.GL_STATIC_DRAW);
-        GL20.glVertexAttribPointer(0, 3, GL11.GL_DOUBLE, false, GL11.GL_FALSE, 32);
+        GL20.glVertexAttribPointer(0, 3, GL11.GL_DOUBLE, false, GL11.GL_FALSE, 0);
 
         // Normals
         GL20.glEnableVertexAttribArray(1);
-        GL15.glGenBuffers();
         int nbo = GL15.glGenBuffers();
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, nbo);
-        DoubleBuffer normalData = BufferUtils.createDoubleBuffer(normalArray.length * 3);
-        vertexData.put(normalArray);
-        vertexData.flip();
+        FloatBuffer normalData = BufferUtils.createFloatBuffer(normalArray.length * 3);
+        normalData.put(normalArray);
+        normalData.flip();
         GL15.glBufferData(GL15.GL_ARRAY_BUFFER, normalData, GL15.GL_STATIC_DRAW);
-        GL20.glVertexAttribPointer(0, 3, GL11.GL_DOUBLE, false, GL11.GL_FALSE, 32);
+        GL20.glVertexAttribPointer(0, 3, GL11.GL_FLOAT, false, GL11.GL_FALSE, 0);
+
+        // Indices
+        int ibo = GL15.glGenBuffers();
+        GL15.glBindBuffer(GL15.GL_ELEMENT_ARRAY_BUFFER, ibo);
+        IntBuffer indexData = BufferUtils.createIntBuffer(indexArray.length);
+        indexData.put(indexArray);
+        indexData.flip();
+        GL15.glBufferData(GL15.GL_ELEMENT_ARRAY_BUFFER, indexData, GL15.GL_STATIC_DRAW);
+        m.setIndices(indexArray.length);
 
         m.setVertexArrayObject(vao);
         GL30.glBindVertexArray(0);
@@ -94,26 +109,46 @@ public class OBJProcessor {
                     break;
                 case "v":
                     try {
+                        vertices.add(Float.parseFloat(lineArgs[1]));
                         vertices.add(Float.parseFloat(lineArgs[2]));
-                        vertices.add(Float.parseFloat(lineArgs[4]));
-                        vertices.add(Float.parseFloat(lineArgs[6]));
+                        vertices.add(Float.parseFloat(lineArgs[3]));
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
                     break;
                 case "vn":
                     try {
+                        normals.add(Float.parseFloat(lineArgs[1]));
                         normals.add(Float.parseFloat(lineArgs[2]));
-                        normals.add(Float.parseFloat(lineArgs[4]));
-                        normals.add(Float.parseFloat(lineArgs[lineArgs.length == 7 ? 6 : 5]));
+                        normals.add(Float.parseFloat(lineArgs[3]));
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
                     break;
                 case "f":
-                    // index
+                    if (normalArray == null) {
+                        normalArray = new float[vertices.size()];
+                    }
+
+                    String[] vert1 = lineArgs[1].split("/");
+                    String[] vert2 = lineArgs[2].split("/");
+                    String[] vert3 = lineArgs[3].split("/");
+
+                    processIndex(vert1);
+                    processIndex(vert2);
+                    processIndex(vert3);
+
                     break;
             }
         }
+    }
+
+    private void processIndex(String[] data) {
+        int vertexIndex = Integer.parseInt(data[0]) - 1;
+        int normalIndex = Integer.parseInt(data[2]) - 1;
+        indices.add(vertexIndex);
+        normalArray[3 * vertexIndex] = normals.get(normalIndex);
+        normalArray[3 * vertexIndex + 1] = normals.get(normalIndex + 1);
+        normalArray[3 * vertexIndex + 2] = normals.get(normalIndex + 2);
     }
 }

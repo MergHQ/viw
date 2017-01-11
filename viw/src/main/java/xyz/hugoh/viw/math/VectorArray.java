@@ -64,7 +64,7 @@ public class VectorArray {
         }
         float[] res = new float[a.length];
         for (int i = 0; i < a.length; ++i) {
-            res[i] = b[i] - a[i];
+            res[i] = a[i] - b[i];
         }
         return res;
     }
@@ -94,9 +94,9 @@ public class VectorArray {
      */
     public static float[] cross3(float[] a, float[] b) {
         float[] res = {
-            (a[1] * b[2]) - (b[1] * a[2]),
-            (a[2] * b[0]) - (b[2] * a[0]),
-            (a[0] * b[1]) - (b[0] * a[1])
+            a[1] * b[2] - b[1] * a[2],
+            a[2] * b[0] - b[2] * a[0],
+            a[0] * b[1] - b[0] * a[1]
         };
         return res;
     }
@@ -120,6 +120,6 @@ public class VectorArray {
      * @return unit vector
      */
     public static float[] normalize(float[] a) {
-        return mulFloat(a, 1 / length(a));
+        return mulFloat(a, 1.f / length(a));
     }
 }
