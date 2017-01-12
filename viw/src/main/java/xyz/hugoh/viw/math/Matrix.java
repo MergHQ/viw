@@ -1,5 +1,6 @@
 package xyz.hugoh.viw.math;
 
+import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;
 
 import java.nio.FloatBuffer;
@@ -82,9 +83,9 @@ public class Matrix {
         float[] right = VectorArray.normalize(VectorArray.cross3(viewray, up));
         up = VectorArray.cross3(right, viewray);
         float[][] res = {
-                {right[0], right[1], right[2], 0f},
-                {up[0],up[1], up[2], 0f},
-                {-viewray[0], -viewray[1], -viewray[2], 0f},
+                {right[0], up[0], viewray[0], 0.0f},
+                {right[1], up[1], viewray[1], 0.0f},
+                {right[2], up[2], viewray[2], 0.f},
                 {-VectorArray.dot(right, pos), -VectorArray.dot(up, pos), VectorArray.dot(viewray, pos), 1f}
         };
         return res;
@@ -103,9 +104,30 @@ public class Matrix {
         float[][] res = {
             {1.f / (aspect * tanHalfFov), 0f, 0f, 0f},
             {0f, 1.f / tanHalfFov, 0f, 0f},
-            {0f, 0f, -(far + near) / (far - near), 1f},
-            {0f, 0f, -(2f * far * near) / (far - near), 0f}
+            {0f, 0f, (far + near) / (near - far), -1f},
+            {0f, 0f, (2f * far) * near / (near - far), 0f}
         };
+        return res;
+    }
+
+    /**
+     * Rotate transformation matrix
+     * @param vec rotation vector
+     * @param deg degrees to rotate
+     * @return matrix.
+     */
+    public static float[][] rotate(float[] vec, float deg) {
+        // TODO: Fully implement.
+        float[][] res = Matrix.identityMatrix44();
+        deg = (float) Math.toRadians(deg);
+        float cosTheta = (float) Math.cos(deg);
+        float sinTheta = (float) Math.sin(deg);
+        res[1][1] = cosTheta;
+        res[2][1] = -sinTheta;
+        res[1][2] = sinTheta;
+        res[2][2] = cosTheta;
+        float[][] vecTransformed = { {vec[0], vec[1], vec[2], 0.f} };
+        res = Matrix.mul(res, vecTransformed);
         return res;
     }
 

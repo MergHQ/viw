@@ -1,6 +1,10 @@
 package xyz.hugoh.viw;
 
+import org.joml.Matrix4f;
+import org.lwjgl.BufferUtils;
 import xyz.hugoh.viw.math.Matrix;
+
+import java.nio.FloatBuffer;
 
 /**
  * Base camera class.
@@ -35,12 +39,12 @@ public abstract class Camera {
 
     }
 
-    public float[][] getViewMatrix() {
-        return viewMatrix;
+    public float[] getViewMatrix() {
+        return Matrix.to1Darray(viewMatrix);
     }
 
-    public float[][] getProjectionMatrix() {
-        return projectionMatrix;
+    public float[] getProjectionMatrix() {
+        return Matrix.to1Darray(projectionMatrix);
     }
 
     /**

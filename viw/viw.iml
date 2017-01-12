@@ -37,6 +37,7 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.lwjgl:lwjgl-jemalloc:natives-windows:3.1.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.lwjgl:lwjgl-lmdb:natives-windows:3.1.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.lwjgl:lwjgl-nanovg:natives-windows:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.joml:joml:1.9.1" level="project" />
     <orderEntry type="library" name="Maven: org.lwjgl.lwjgl:lwjgl_util:2.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.lwjgl.lwjgl:lwjgl:2.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.lwjgl.lwjgl:lwjgl-platform:natives-windows:2.8.1" level="project" />

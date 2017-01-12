@@ -83,10 +83,12 @@ public class Window {
 
     private void beginLoop() {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glEnable(GL_DEPTH_TEST);
+        glDepthFunc(GL_LESS);
         //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
         while (!glfwWindowShouldClose(windowHandle)) {
-            glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
-            glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            glClearColor(1f, 0.6f, 0.6f, 1f);
             if (renderer != null) {
                 renderer.render();
             }

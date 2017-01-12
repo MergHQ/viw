@@ -62,10 +62,10 @@ public class MatrixTest {
     }
 
     @Test
-    public void toFloatBufferWorks() {
+    public void to1DArrayWorks() {
         float[] res = {1f, 1f, 1f, 1f};
         float[][] mat =  {{1f, 1f}, {1f, 1f}};
-        assertTrue(Arrays.equals(Matrix.toFloatBuffer(mat).array(), res));
+        assertTrue(Arrays.equals(Matrix.to1Darray(mat), res));
     }
 
 }
