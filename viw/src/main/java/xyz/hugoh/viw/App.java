@@ -18,7 +18,7 @@ public class App {
      */
     public static void main(String[] args) {
         Window window = new Window();
-        window.setCamera(new BasicCamera(60.f, 1280.f / 720.f, 0.1f, 1000.f));
+        window.setCamera(new BasicCamera(60.f, 1280.f / 720.f, 0.0f, 1000.f));
         window.create(1280, 720, () -> {
             Renderer renderer = new Renderer();
 

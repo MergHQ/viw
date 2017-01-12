@@ -7,6 +7,8 @@ import xyz.hugoh.viw.Scene;
 import xyz.hugoh.viw.math.Matrix;
 
 
+import java.util.Arrays;
+
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL20.glUseProgram;
 
@@ -27,7 +29,7 @@ public class Renderer {
      */
     public void render() {
         glUseProgram(currentScene.getShader().getShaderProgramHandle());
-        for (Mesh mesh : currentScene.getMeshList()) {
+        currentScene.getMeshList().forEach(mesh -> {
             glEnableVertexAttribArray(0);
             glEnableVertexAttribArray(1);
             GL30.glBindVertexArray(mesh.getVertexArrayObject());
@@ -35,16 +37,16 @@ public class Renderer {
             int tmUniformHandle = glGetUniformLocation(currentScene.getShader().getShaderProgramHandle(), "u_transformationMatrix");
             int pmUniformHandle = glGetUniformLocation(currentScene.getShader().getShaderProgramHandle(), "u_projectionMatrix");
             int vmUniformHandle = glGetUniformLocation(currentScene.getShader().getShaderProgramHandle(), "u_viewMatrix");
-            glUniformMatrix4fv(tmUniformHandle, false, Matrix.toFloatBuffer(mesh.getTransformationMatrix()));
+            glUniformMatrix4fv(tmUniformHandle, false, Matrix.to1Darray(mesh.getTransformationMatrix()));
 
             Window window = currentScene.getWindow();
-            glUniformMatrix4fv(pmUniformHandle, true, Matrix.toFloatBuffer(window.getCamera().getProjectionMatrix()));
-            glUniformMatrix4fv(vmUniformHandle, true, Matrix.toFloatBuffer(window.getCamera().getViewMatrix()));
+            glUniformMatrix4fv(pmUniformHandle, false, Matrix.to1Darray(window.getCamera().getProjectionMatrix()));
+            glUniformMatrix4fv(vmUniformHandle, false, Matrix.to1Darray(window.getCamera().getViewMatrix()));
 
             GL11.glDrawElements(GL11.GL_TRIANGLES, mesh.getIndices(), GL11.GL_UNSIGNED_INT, 0);
             glDisableVertexAttribArray(0);
             glDisableVertexAttribArray(1);
-        }
+        });
     }
 
     public Scene getCurrentScene() {

@@ -82,10 +82,10 @@ public class Matrix {
         float[] right = VectorArray.normalize(VectorArray.cross3(viewray, up));
         up = VectorArray.cross3(right, viewray);
         float[][] res = {
-            {right[0], up[0], -viewray[0], -VectorArray.dot(right, pos)},
-            {right[1], up[1], -viewray[1], -VectorArray.dot(up, pos)},
-            {right[2], up[2], -viewray[2], VectorArray.dot(viewray, pos)},
-            {0f, 0f, 0f, 1f}
+                {right[0], right[1], right[2], 0f},
+                {up[0],up[1], up[2], 0f},
+                {-viewray[0], -viewray[1], -viewray[2], 0f},
+                {-VectorArray.dot(right, pos), -VectorArray.dot(up, pos), VectorArray.dot(viewray, pos), 1f}
         };
         return res;
     }
@@ -99,12 +99,12 @@ public class Matrix {
      * @return projection matrix
      */
     public static float[][] perspective(float fov, float aspect, float near, float far) {
-        float tanHalfFov = (float) Math.tan(fov / 2.f);
+        final float tanHalfFov = (float) Math.tan(fov / 2.f);
         float[][] res = {
             {1.f / (aspect * tanHalfFov), 0f, 0f, 0f},
             {0f, 1.f / tanHalfFov, 0f, 0f},
-            {0f, 0f, -(far + near) / (far - near), -1f},
-            {0f, 0f, -((2f * far * near) / (far - near)), 0f}
+            {0f, 0f, -(far + near) / (far - near), 1f},
+            {0f, 0f, -(2f * far * near) / (far - near), 0f}
         };
         return res;
     }
@@ -123,6 +123,18 @@ public class Matrix {
         }
 
         return buffer;
+    }
+
+    public static float[] to1Darray(float[][] matrix) {
+        float[] res = new float[matrix.length * matrix[0].length];
+        int ind = 0;
+        for (int i = 0; i < matrix.length; ++i) {
+            for (int j = 0; j < matrix[0].length; ++j) {
+                res[ind] = matrix[i][j];
+                ++ind;
+            }
+        }
+        return res;
     }
 }
 
