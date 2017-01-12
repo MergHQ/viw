@@ -1,5 +1,9 @@
 package xyz.hugoh.viw.math;
 
+import org.lwjgl.BufferUtils;
+
+import java.nio.FloatBuffer;
+
 /**
  * Utils for matrices.
  */
@@ -106,20 +110,19 @@ public class Matrix {
     }
 
     /**
-     * Convert matrix from 2D array to 1D array.
+     * Convert matrix to float buffer.
      * @param matrix matrix to be converted
-     * @return 1d version of the matrix.
+     * @return float buffer of the matrix.
      */
-    public static float[] converTo1D(float[][] matrix) {
-        float[] res = new float[matrix.length * matrix[0].length];
-        int index = 0;
+    public static FloatBuffer toFloatBuffer(float[][] matrix) {
+        FloatBuffer buffer = BufferUtils.createFloatBuffer(matrix.length * matrix[0].length);
         for (int i = 0; i < matrix.length; ++i) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                res[index] = matrix[i][j];
-                ++index;
+            for (int j = 0; j < matrix[0].length; ++j) {
+                buffer.put(matrix[j][i]);
             }
         }
-        return res;
+
+        return buffer;
     }
 }
 

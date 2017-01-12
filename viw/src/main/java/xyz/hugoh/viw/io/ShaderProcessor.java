@@ -71,7 +71,5 @@ public class ShaderProcessor {
         }
 
         s.setShaderProgramHandle(shaderProgramHandle);
-        glDeleteProgram(fsId);
-        glDeleteProgram(vsId);
     }
 }

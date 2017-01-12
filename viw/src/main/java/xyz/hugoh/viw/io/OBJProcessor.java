@@ -85,7 +85,7 @@ public class OBJProcessor {
         normalData.put(normalArray);
         normalData.flip();
         GL15.glBufferData(GL15.GL_ARRAY_BUFFER, normalData, GL15.GL_STATIC_DRAW);
-        GL20.glVertexAttribPointer(0, 3, GL11.GL_FLOAT, false, GL11.GL_FALSE, 0);
+        GL20.glVertexAttribPointer(1, 3, GL11.GL_FLOAT, false, 0, 0);
 
         // Indices
         int ibo = GL15.glGenBuffers();
@@ -98,6 +98,8 @@ public class OBJProcessor {
 
         m.setVertexArrayObject(vao);
         GL30.glBindVertexArray(0);
+        GL20.glDisableVertexAttribArray(0);
+        GL20.glDisableVertexAttribArray(1);
     }
 
     private void processLine(String line, Mesh m) {

@@ -2,6 +2,7 @@ package xyz.hugoh.viw.renderer;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL30;
+import xyz.hugoh.viw.Mesh;
 import xyz.hugoh.viw.Scene;
 import xyz.hugoh.viw.math.Matrix;
 
@@ -26,20 +27,24 @@ public class Renderer {
      */
     public void render() {
         glUseProgram(currentScene.getShader().getShaderProgramHandle());
-        currentScene.getMeshList().forEach(mesh -> {
+        for (Mesh mesh : currentScene.getMeshList()) {
+            glEnableVertexAttribArray(0);
+            glEnableVertexAttribArray(1);
             GL30.glBindVertexArray(mesh.getVertexArrayObject());
 
             int tmUniformHandle = glGetUniformLocation(currentScene.getShader().getShaderProgramHandle(), "u_transformationMatrix");
             int pmUniformHandle = glGetUniformLocation(currentScene.getShader().getShaderProgramHandle(), "u_projectionMatrix");
             int vmUniformHandle = glGetUniformLocation(currentScene.getShader().getShaderProgramHandle(), "u_viewMatrix");
-            glUniformMatrix4fv(tmUniformHandle, true, Matrix.converTo1D(mesh.getTransformationMatrix()));
+            glUniformMatrix4fv(tmUniformHandle, false, Matrix.toFloatBuffer(mesh.getTransformationMatrix()));
 
             Window window = currentScene.getWindow();
-            glUniformMatrix4fv(pmUniformHandle, true, Matrix.converTo1D(window.getCamera().getProjectionMatrix()));
-            glUniformMatrix4fv(vmUniformHandle, true, Matrix.converTo1D(window.getCamera().getViewMatrix()));
+            glUniformMatrix4fv(pmUniformHandle, true, Matrix.toFloatBuffer(window.getCamera().getProjectionMatrix()));
+            glUniformMatrix4fv(vmUniformHandle, true, Matrix.toFloatBuffer(window.getCamera().getViewMatrix()));
 
-            GL11.glDrawElements(GL11.GL_TRIANGLES, mesh.getIndices(), GL11.GL_INT, 0);
-        });
+            GL11.glDrawElements(GL11.GL_TRIANGLES, mesh.getIndices(), GL11.GL_UNSIGNED_INT, 0);
+            glDisableVertexAttribArray(0);
+            glDisableVertexAttribArray(1);
+        }
     }
 
     public Scene getCurrentScene() {

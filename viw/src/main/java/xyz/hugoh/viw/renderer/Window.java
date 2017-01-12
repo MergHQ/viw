@@ -83,10 +83,10 @@ public class Window {
 
     private void beginLoop() {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-
+        glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
         while (!glfwWindowShouldClose(windowHandle)) {
             glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
-            glClearColor(1.0f, 1.0f, 1.0f, 0.8f);
+            glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
             if (renderer != null) {
                 renderer.render();
             }
