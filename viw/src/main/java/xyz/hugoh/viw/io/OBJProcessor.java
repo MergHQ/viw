@@ -72,8 +72,7 @@ public class OBJProcessor {
         int vbo = GL15.glGenBuffers();
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, vbo);
         DoubleBuffer vertexData = BufferUtils.createDoubleBuffer(vertexArray.length * 3);
-        vertexData.put(vertexArray);
-        vertexData.flip();
+        vertexData.put(vertexArray).flip();
         GL15.glBufferData(GL15.GL_ARRAY_BUFFER, vertexData, GL15.GL_STATIC_DRAW);
         GL20.glVertexAttribPointer(0, 3, GL11.GL_DOUBLE, false, GL11.GL_FALSE, 0);
 
@@ -81,9 +80,8 @@ public class OBJProcessor {
         GL20.glEnableVertexAttribArray(1);
         int nbo = GL15.glGenBuffers();
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, nbo);
-        FloatBuffer normalData = BufferUtils.createFloatBuffer(normalArray.length * 3);
-        normalData.put(normalArray);
-        normalData.flip();
+        FloatBuffer normalData = BufferUtils.createFloatBuffer(normalArray.length);
+        normalData.put(normalArray).flip();
         GL15.glBufferData(GL15.GL_ARRAY_BUFFER, normalData, GL15.GL_STATIC_DRAW);
         GL20.glVertexAttribPointer(1, 3, GL11.GL_FLOAT, false, 0, 0);
 
@@ -91,8 +89,7 @@ public class OBJProcessor {
         int ibo = GL15.glGenBuffers();
         GL15.glBindBuffer(GL15.GL_ELEMENT_ARRAY_BUFFER, ibo);
         IntBuffer indexData = BufferUtils.createIntBuffer(indexArray.length);
-        indexData.put(indexArray);
-        indexData.flip();
+        indexData.put(indexArray).flip();
         GL15.glBufferData(GL15.GL_ELEMENT_ARRAY_BUFFER, indexData, GL15.GL_STATIC_DRAW);
         m.setIndices(indexArray.length);
 

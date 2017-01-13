@@ -13,7 +13,7 @@ import static org.lwjgl.opengl.GL11.glGetString;
 
 public class App {
     /**
-     * It should pretty clear what this method is, but checkstyle wants me to document this.
+     * It should pretty clear what this method is.
      * @param args it should also be pretty clear what this is.
      */
     public static void main(String[] args) {
@@ -24,7 +24,7 @@ public class App {
 
             Scene scene = new Scene(window);
             OBJProcessor objProcessor = new OBJProcessor();
-            Mesh m  = objProcessor.load3DObject(args.length == 1 ? args[0] : "suzanne.obj");
+            Mesh m  = objProcessor.load3DObject(args.length == 1 ? args[0] : "cube.obj");
             m.setPosition(1f,1f,1f);
             System.out.println(m.getName());
             scene.addMesh(m);

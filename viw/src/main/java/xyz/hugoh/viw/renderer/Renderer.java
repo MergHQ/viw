@@ -28,8 +28,7 @@ public class Renderer {
         time++;
         glUseProgram(currentScene.getShader().getShaderProgramHandle());
         currentScene.getMeshList().forEach(mesh -> {
-            float[] axis = {0, 1, 0};
-            mesh.setRotation(axis, time / 100.f);
+
             glEnableVertexAttribArray(0);
             glEnableVertexAttribArray(1);
             GL30.glBindVertexArray(mesh.getVertexArrayObject());
