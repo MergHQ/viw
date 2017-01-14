@@ -71,7 +71,7 @@ public class OBJProcessor {
         GL20.glEnableVertexAttribArray(0);
         int vbo = GL15.glGenBuffers();
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, vbo);
-        DoubleBuffer vertexData = BufferUtils.createDoubleBuffer(vertexArray.length * 3);
+        DoubleBuffer vertexData = BufferUtils.createDoubleBuffer(vertexArray.length);
         vertexData.put(vertexArray).flip();
         GL15.glBufferData(GL15.GL_ARRAY_BUFFER, vertexData, GL15.GL_STATIC_DRAW);
         GL20.glVertexAttribPointer(0, 3, GL11.GL_DOUBLE, false, GL11.GL_FALSE, 0);
@@ -129,14 +129,9 @@ public class OBJProcessor {
                         normalArray = new float[vertices.size()];
                     }
 
-                    String[] vert1 = lineArgs[1].split("/");
-                    String[] vert2 = lineArgs[2].split("/");
-                    String[] vert3 = lineArgs[3].split("/");
-
-                    processIndex(vert1);
-                    processIndex(vert2);
-                    processIndex(vert3);
-
+                    for (int i = 1; i < lineArgs.length; ++i) {
+                        processIndex(lineArgs[i].split("/"));
+                    }
                     break;
             }
         }
@@ -146,8 +141,8 @@ public class OBJProcessor {
         int vertexIndex = Integer.parseInt(data[0]) - 1;
         int normalIndex = Integer.parseInt(data[2]) - 1;
         indices.add(vertexIndex);
-        normalArray[3 * vertexIndex] = normals.get(normalIndex);
-        normalArray[3 * vertexIndex + 1] = normals.get(normalIndex + 1);
-        normalArray[3 * vertexIndex + 2] = normals.get(normalIndex + 2);
+        normalArray[3 * vertexIndex] = normals.get(3 * normalIndex);
+        normalArray[3 * vertexIndex + 1] = normals.get(3 * normalIndex + 1);
+        normalArray[3 * vertexIndex + 2] = normals.get(3 * normalIndex + 2);
     }
 }
