@@ -10,6 +10,9 @@ import java.awt.event.KeyEvent;
  * Basic camera.
  */
 public class BasicCamera extends Camera {
+    private int deg = 0;
+    private float radius = 5.f;
+
     /**
      * Creates a new {@link BasicCamera} instance.
      * @param fov field of view
@@ -19,19 +22,22 @@ public class BasicCamera extends Camera {
      */
     public BasicCamera(float fov, float aspectRatio, float near, float far) {
         super(fov, aspectRatio, near, far);
-        float[] pos = {4f, -2f, 0f};
+        float[] pos = {0f, 1f, 0f};
         float[] center = {0f, 0f, 0f};
         super.setPosition(pos);
     }
 
     @Override
-    public void onInputEvent(long window, int key, int scancode, int action, int mods) {
-        if (key == GLFW.GLFW_KEY_W && action == GLFW.GLFW_RELEASE) {
-            float[] a = {1f,0f,0f};
-            setPosition(VectorArray.sum(getPosition(), a));
-        } else if (key == GLFW.GLFW_KEY_S && action == GLFW.GLFW_RELEASE) {
-            float[] a = {-1f,0f,0f};
-            setPosition(VectorArray.sum(getPosition(), a));
-        }
+    public void onScrollWheel(double scrollX, double scrollY) {
+        radius += -(scrollX + scrollY) / 2.f;
+    }
+
+    @Override
+    public void update() {
+        float posX = (float) Math.cos(deg / 100.f) * radius;
+        float posZ = (float) Math.sin(deg / 100.f) * radius;
+        float[] pos = {posX, -3f, posZ};
+        setPosition(pos);
+        ++deg;
     }
 }
