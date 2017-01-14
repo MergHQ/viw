@@ -8,6 +8,7 @@ import xyz.hugoh.viw.renderer.Window;
 
 import javax.swing.*;
 import java.awt.*;
+
 public class App {
     /**
      * It should pretty clear what this method is.
@@ -45,6 +46,7 @@ public class App {
         FileDialog fileDialog = new FileDialog(frame, "Choose a obj file", FileDialog.LOAD);
         fileDialog.setFile("*.obj");
         fileDialog.setVisible(true);
+        frame.dispose();
         return fileDialog.getDirectory() + fileDialog.getFile();
     }
 }
