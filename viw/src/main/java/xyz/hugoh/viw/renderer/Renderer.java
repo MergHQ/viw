@@ -28,6 +28,8 @@ public class Renderer {
         time++;
         glUseProgram(currentScene.getShader().getShaderProgramHandle());
         currentScene.getMeshList().forEach(mesh -> {
+            Window window = currentScene.getWindow();
+            window.getCamera().update();
 
             glEnableVertexAttribArray(0);
             glEnableVertexAttribArray(1);
@@ -38,7 +40,6 @@ public class Renderer {
             int vmUniformHandle = glGetUniformLocation(currentScene.getShader().getShaderProgramHandle(), "u_viewMatrix");
             glUniformMatrix4fv(tmUniformHandle, false, mesh.getTransformationMatrix());
 
-            Window window = currentScene.getWindow();
             glUniformMatrix4fv(pmUniformHandle, false, window.getCamera().getProjectionMatrix());
             glUniformMatrix4fv(vmUniformHandle, false, window.getCamera().getViewMatrix());
 

@@ -38,7 +38,7 @@ public class OBJProcessorTest {
 
     @Test
     public void nameIsCorrect() {
-        Mesh m = processor.load3DObject("cube.obj");
+        Mesh m = processor.load3DObject("models/cube.obj");
         assertEquals(m.getName(), "cube");
     }
 

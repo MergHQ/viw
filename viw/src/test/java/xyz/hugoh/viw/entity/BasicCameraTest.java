@@ -43,7 +43,7 @@ public class BasicCameraTest {
 
     @Test
     public void positionIsCorrect() {
-        float[] pos = {4f, 2f, 0f};
+        float[] pos = {0f, 1f, 0f};
         assertTrue(Arrays.equals(pos, camera.getPosition()));
     }
 

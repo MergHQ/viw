@@ -62,6 +62,12 @@ public class Window {
             }
         });
 
+        glfwSetScrollCallback(windowHandle, (window, scrollX, scrollY) -> {
+           if (camera != null) {
+               camera.onScrollWheel(scrollX, scrollY);
+           }
+        });
+
         glfwMakeContextCurrent(windowHandle);
         glfwSwapInterval(1);
 
@@ -88,7 +94,7 @@ public class Window {
         //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
         while (!glfwWindowShouldClose(windowHandle)) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-            glClearColor(1f, 0.6f, 0.6f, 1f);
+            glClearColor(1f, 1f, 1f, 1f);
             if (renderer != null) {
                 renderer.render();
             }

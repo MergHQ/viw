@@ -39,6 +39,18 @@ public abstract class Camera {
 
     }
 
+    /**
+     * Called on mouse scroll.
+     * @param scrollX The scroll offset along the x-axis
+     * @param scrollY The scroll offset along the y-axis
+     */
+    public void onScrollWheel(double scrollX, double scrollY) {}
+
+    /**
+     * Called every frame.
+     */
+    public void update() {}
+
     public float[] getViewMatrix() {
         return Matrix.to1Darray(viewMatrix);
     }
