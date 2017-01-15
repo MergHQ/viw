@@ -31,9 +31,8 @@ There're also utilities for matrices and vectors. There are mainly used by `Came
 
 ### yUML script
 ```
-[Renderer]1-1[Scene], [Scene]*-1[\<\<interface\>\> | Camera], [Window], [OBJProcessor]creates-.->[Mesh], [ShaderProcessor]creates-.->[Shader], [Camera]1-1[Window], [Window]1-1[Renderer], [Shader]1-1[Scene], [Mesh]*-1[Scene], [Camera]-.->[\<\<interface\>\> | Camera], [ArrayVector], [Matrix]
-[Mesh]uses-.->[Matrix]
-[Matrix]uses-.->[ArrayVector]
+[Renderer]-1[Scene], [Scene]*-1[\<\<abstract\>\> | Camera], [Window], [OBJProcessor]creates-.->[Mesh], [ShaderProcessor]creates-.->[Shader], [Camera]1-[Window], [Window]-1[Renderer], [Shader]1-1[Scene], [Mesh]*-1[Scene], [Camera]-.->[\<\<abstract\>\> | Camera], [ArrayVector], [Matrix], [Mesh]uses-.->[Matrix], [Matrix]uses-.->[ArrayVector],[Scene]-1[Window]
+
 ```
 
 ## Sequence diagrams
