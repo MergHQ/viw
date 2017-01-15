@@ -32,8 +32,10 @@ public class OrbitingCameraTest {
 
     @Test
     public void projectionMatrixIsCorrectlyInitialized() {
-        float[][] matrix = Matrix.perspective(90.f, 800.f / 600.f, 0.1f, 1000.f);
-        //assertTrue(Arrays.deepEquals(matrix, camera.getProjectionMatrix()));
+        float[] matrix =
+                Matrix.to1Darray(
+                Matrix.perspective(90.f, 800.f / 600.f, 0.1f, 1000.f));
+        assertTrue(Arrays.equals(matrix, camera.getProjectionMatrix()));
     }
 
     @Test

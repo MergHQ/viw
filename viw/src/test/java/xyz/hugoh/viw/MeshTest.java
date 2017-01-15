@@ -39,7 +39,7 @@ public class MeshTest {
         mesh.setPosition(array[0], array[1], array[2]);
         mesh.setPosition(array[0], array[1], array[2]);
         float[] mat = mesh.getTransformationMatrix();
-        //assertTrue(mat[3][0] == 2.4f && mat[3][1] == 6.66f && mat[3][2] == 4.6f);
+        assertTrue(mat[12] == 1.2f && mat[13] == 3.33f && mat[14] == 2.3f);
     }
 
 }
