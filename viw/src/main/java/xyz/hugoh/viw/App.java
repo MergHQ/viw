@@ -1,6 +1,6 @@
 package xyz.hugoh.viw;
 
-import xyz.hugoh.viw.entity.BasicCamera;
+import xyz.hugoh.viw.entity.OrbitingCamera;
 import xyz.hugoh.viw.io.OBJProcessor;
 import xyz.hugoh.viw.io.ShaderProcessor;
 import xyz.hugoh.viw.renderer.Renderer;
@@ -17,7 +17,7 @@ public class App {
     public static void main(String[] args) {
         String file = getFile();
         Window window = new Window();
-        window.setCamera(new BasicCamera((float) Math.toRadians(60.0), 1280.f / 720.f, 0.1f, 1000.f));
+        window.setCamera(new OrbitingCamera((float) Math.toRadians(60.0), 1280.f / 720.f, 0.1f, 1000.f));
         window.create(1280, 720, () -> {
             Renderer renderer = new Renderer();
 

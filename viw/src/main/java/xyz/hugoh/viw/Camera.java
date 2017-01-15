@@ -47,6 +47,13 @@ public abstract class Camera {
     public void onScrollWheel(double scrollX, double scrollY) {}
 
     /**
+     * Called when the mouse position changes.
+     * @param posX x position
+     * @param posY y position
+     */
+    public void onMouseMoved(double posX, double posY) {}
+
+    /**
      * Called every frame.
      */
     public void update() {}

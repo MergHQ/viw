@@ -68,6 +68,12 @@ public class Window {
            }
         });
 
+        glfwSetCursorPosCallback(windowHandle, (window, posX, posY) -> {
+            if (camera != null) {
+                camera.onMouseMoved(posX, posY);
+            }
+        });
+
         glfwMakeContextCurrent(windowHandle);
         glfwSwapInterval(1);
 

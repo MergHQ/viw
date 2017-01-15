@@ -38,10 +38,15 @@ public class Renderer {
             int tmUniformHandle = glGetUniformLocation(currentScene.getShader().getShaderProgramHandle(), "u_transformationMatrix");
             int pmUniformHandle = glGetUniformLocation(currentScene.getShader().getShaderProgramHandle(), "u_projectionMatrix");
             int vmUniformHandle = glGetUniformLocation(currentScene.getShader().getShaderProgramHandle(), "u_viewMatrix");
+            int camPosUniformHandle = glGetUniformLocation(currentScene.getShader().getShaderProgramHandle(), "u_cameraPos");
+
             glUniformMatrix4fv(tmUniformHandle, false, mesh.getTransformationMatrix());
 
             glUniformMatrix4fv(pmUniformHandle, false, window.getCamera().getProjectionMatrix());
             glUniformMatrix4fv(vmUniformHandle, false, window.getCamera().getViewMatrix());
+
+            float[] pos = window.getCamera().getPosition();
+            glUniform3f(camPosUniformHandle, pos[0], pos[1], pos[2]);
 
             GL11.glDrawElements(GL11.GL_TRIANGLES, mesh.getIndices(), GL11.GL_UNSIGNED_INT, 0);
             glDisableVertexAttribArray(0);

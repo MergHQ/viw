@@ -1,26 +1,23 @@
 package xyz.hugoh.viw.entity;
 
-import org.lwjgl.glfw.GLFW;
 import xyz.hugoh.viw.Camera;
-import xyz.hugoh.viw.math.VectorArray;
-
-import java.awt.event.KeyEvent;
 
 /**
  * Basic camera.
  */
-public class BasicCamera extends Camera {
+public class OrbitingCamera extends Camera {
     private int deg = 0;
     private float radius = 5.f;
+    private float mouseX = 0;
 
     /**
-     * Creates a new {@link BasicCamera} instance.
+     * Creates a new {@link OrbitingCamera} instance.
      * @param fov field of view
      * @param aspectRatio aspect ratio
      * @param near camera near field
      * @param far camera far field
      */
-    public BasicCamera(float fov, float aspectRatio, float near, float far) {
+    public OrbitingCamera(float fov, float aspectRatio, float near, float far) {
         super(fov, aspectRatio, near, far);
         float[] pos = {0f, 1f, 0f};
         float[] center = {0f, 0f, 0f};
@@ -33,11 +30,17 @@ public class BasicCamera extends Camera {
     }
 
     @Override
+    public void onMouseMoved(double posX, double posY) {
+        float dx = (float) posX - mouseX;
+        deg += -dx / 2.f;
+        mouseX = (float) posX;
+    }
+
+    @Override
     public void update() {
         float posX = (float) Math.cos(deg / 100.f) * radius;
         float posZ = (float) Math.sin(deg / 100.f) * radius;
         float[] pos = {posX, -3f, posZ};
         setPosition(pos);
-        ++deg;
     }
 }
