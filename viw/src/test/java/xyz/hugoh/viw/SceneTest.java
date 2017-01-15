@@ -2,6 +2,7 @@ package xyz.hugoh.viw;
 
 import org.junit.Before;
 import org.junit.Test;
+import xyz.hugoh.viw.renderer.Window;
 
 import java.util.UUID;
 
@@ -15,7 +16,8 @@ public class SceneTest {
 
     @Before
     public void setUp() {
-        scene = new Scene(null);
+        Window window = new Window();
+        scene = new Scene(window);
     }
 
     @Test
@@ -38,4 +40,7 @@ public class SceneTest {
     public void shaderIsNull() {
         assertNull(scene.getShader());
     }
+
+    @Test
+    public void windowIsNotNull() { assertNotNull(scene.getWindow());}
 }

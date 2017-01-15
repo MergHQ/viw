@@ -111,7 +111,7 @@ public class Matrix {
     }
 
     /**
-     * Rotate transformation matrix
+     * Rotate transformation matrix.
      * @param vec rotation vector
      * @param deg degrees to rotate
      * @return matrix.
@@ -132,21 +132,10 @@ public class Matrix {
     }
 
     /**
-     * Convert matrix to float buffer.
+     * Convert matrix to 1D array.
      * @param matrix matrix to be converted
-     * @return float buffer of the matrix.
+     * @return float array of the matrix
      */
-    public static FloatBuffer toFloatBuffer(float[][] matrix) {
-        FloatBuffer buffer = BufferUtils.createFloatBuffer(matrix.length * matrix[0].length);
-        for (int i = 0; i < matrix.length; ++i) {
-            for (int j = 0; j < matrix[0].length; ++j) {
-                buffer.put(matrix[j][i]);
-            }
-        }
-
-        return buffer;
-    }
-
     public static float[] to1Darray(float[][] matrix) {
         float[] res = new float[matrix.length * matrix[0].length];
         int ind = 0;

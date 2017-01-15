@@ -30,8 +30,9 @@ public class Window {
 
     /**
      * Creates an OpenGL context and begins render loop.
-     * @param width width of window
-     * @param height height of window
+     *
+     * @param width       width of window
+     * @param height      height of window
      * @param onInitReady callback function that is executed when the OpenGL context is fully created
      */
     public void create(int width, int height, Callable onInitReady) {
@@ -63,9 +64,9 @@ public class Window {
         });
 
         glfwSetScrollCallback(windowHandle, (window, scrollX, scrollY) -> {
-           if (camera != null) {
-               camera.onScrollWheel(scrollX, scrollY);
-           }
+            if (camera != null) {
+                camera.onScrollWheel(scrollX, scrollY);
+            }
         });
 
         glfwSetCursorPosCallback(windowHandle, (window, posX, posY) -> {

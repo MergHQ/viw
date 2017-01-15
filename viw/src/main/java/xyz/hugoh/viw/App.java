@@ -11,8 +11,8 @@ import java.awt.*;
 
 public class App {
     /**
-     * It should pretty clear what this method is.
-     * @param args it should also be pretty clear what this is.
+     * Entry point of the application.
+     * @param args currently nothing.
      */
     public static void main(String[] args) {
         String file = getFile();
@@ -24,7 +24,7 @@ public class App {
             Scene scene = new Scene(window);
             OBJProcessor objProcessor = new OBJProcessor();
             Mesh m  = objProcessor.load3DObject(file != null ? file : "models/sphere.obj");
-            m.setPosition(1f,1f,1f);
+            m.setPosition(0f, 0f, 0f);
             System.out.println(m.getName());
             scene.addMesh(m);
 

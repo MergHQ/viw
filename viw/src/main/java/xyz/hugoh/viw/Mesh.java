@@ -43,18 +43,6 @@ public class Mesh {
         transformationMatrix = Matrix.translate4x4(Matrix.identityMatrix44(), converted);
     }
 
-    public void setRotation(float[] vec, float theta) {
-        float[] res = new float[16];
-        new Matrix4f().identity().translate(transformationMatrix[3][0], transformationMatrix[3][1], transformationMatrix[3][2]).rotate(theta, vec[0], vec[1], vec[2]).get(res);
-        float[][] twoDimensional = {
-                {res[0], res[1], res[2], res[3]},
-                {res[4], res[5], res[6], res[7]},
-                {res[8], res[9], res[10], res[11]},
-                {res[12], res[13], res[14], res[15]}
-        };
-        transformationMatrix = twoDimensional;
-    }
-
     public float[] getPosition() {
         return transformationMatrix[3];
     }
