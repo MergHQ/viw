@@ -6,16 +6,20 @@
 
 ### How to use
 
-Run the jar with `java -jar viw-1.0-SNAPSHOT.jar file.obj`.
+Run the jar with `java -jar viw-1.0-SNAPSHOT.jar`.
+The application will open a dialogue to open a .obj file. Select one and open it. You'll find some 3D models in `viw/models`.
+The OBJ file should now appear on the screen. **Keep in mind that this application only supports triangular faces.**
+
+By moving the mouse to left and right you move the camera around the 3D model. You can use the scroll wheel to adjust the distance to the 3D model.
 
 ### Documentation
 
-[subject and structure](/docs/subjectAndStructure.md)
+[Subject and structure](/docs/subjectAndStructure.md)
 
-[working hours](/docs/hours.md)
+[Working hours](/docs/hours.md)
 
-[diagrams](/docs/subjectAndStructure.md#Class Diagram)
+[Diagrams](/docs/subjectAndStructure.md#Class Diagram)
 
-[Checkstyle](https://htmlpreview.github.io/?https://raw.githubusercontent.com/MergHQ/viw/master/docs/checkstyle-reports/201711011936/checkstyle.html)
+[Checkstyle](https://htmlpreview.github.io/?https://raw.githubusercontent.com/MergHQ/viw/master/docs/checkstyle-reports/201715011803/checkstyle.html)
 
-[PIT-report](https://htmlpreview.github.io/?https://raw.githubusercontent.com/MergHQ/viw/master/docs/pit/201701111936/index.html)
+[PIT-report](https://htmlpreview.github.io/?https://raw.githubusercontent.com/MergHQ/viw/master/docs/pit/201701151731/index.html)
