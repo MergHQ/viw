@@ -24,4 +24,10 @@ public class WindowTest {
         assertTrue(window.getCamera() == null);
     }
 
+    @Test
+    public void rendererIsNotNullAfterSEt() {
+        window.setRenderer(new Renderer());
+        assertNotNull(window.getRenderer());
+    }
+
 }

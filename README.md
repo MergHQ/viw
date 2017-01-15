@@ -20,6 +20,8 @@ By moving the mouse to left and right you move the camera around the 3D model. Y
 
 [Diagrams](/docs/subjectAndStructure.md#Class Diagram)
 
-[Checkstyle](https://htmlpreview.github.io/?https://raw.githubusercontent.com/MergHQ/viw/master/docs/checkstyle-reports/201715011803/checkstyle.html)
+[Checkstyle](https://htmlpreview.github.io/?https://raw.githubusercontent.com/MergHQ/viw/master/docs/checkstyle-reports/201715010808/checkstyle.html)
 
-[PIT-report](https://htmlpreview.github.io/?https://raw.githubusercontent.com/MergHQ/viw/master/docs/pit/201701151731/index.html)
+[PIT-report](https://htmlpreview.github.io/?https://raw.githubusercontent.com/MergHQ/viw/master/docs/pit/201701152138/index.html)
+
+[Test documentation](/docs/testdocs.md)
