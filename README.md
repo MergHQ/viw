@@ -25,3 +25,7 @@ By moving the mouse to left and right you move the camera around the 3D model. Y
 [PIT-report](https://htmlpreview.github.io/?https://raw.githubusercontent.com/MergHQ/viw/master/docs/pit/201701152138/index.html)
 
 [Test documentation](/docs/testdocs.md)
+
+### Libraries
+
+[LWJGL3](https://github.com/LWJGL/lwjgl3)
